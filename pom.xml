@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
 
-    <description>NF project</description>
+    <description>NF project2</description>
 
     <groupId>com.es.nf</groupId>
     <artifactId>nf-parent</artifactId>

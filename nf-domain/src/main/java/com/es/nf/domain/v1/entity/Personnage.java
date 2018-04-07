@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * Adresse class
+ * Personnage class connected to NF Mongo DB Personnage Collection
+ *
+ * @author : Eric Lewanwdowski
  *
  */
 

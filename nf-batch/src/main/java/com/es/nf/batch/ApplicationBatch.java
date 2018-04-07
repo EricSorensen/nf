@@ -2,7 +2,8 @@ package com.es.nf.batch;
 
 /**
  *  Main class for Springboot application NF Batch
- * @author
+ *
+ * @author Eric Lewandowski
  */
 
 import org.springframework.beans.factory.annotation.Value;

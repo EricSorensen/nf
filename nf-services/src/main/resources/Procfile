@@ -1,1 +1,0 @@
-web: java -jar target/nf-services-1.0-SNAPSHOT.jar

@@ -9,12 +9,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-
-
 /**
- * Adresse class
+ * Adresse class connected to NF Mongo DB Personnage Collection
  *
- */
+ * @author : Eric Lewanwdowski
+ *
+ **/
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({

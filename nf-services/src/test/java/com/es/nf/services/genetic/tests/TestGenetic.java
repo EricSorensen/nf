@@ -34,8 +34,7 @@ public class TestGenetic  {
         Gene gene = chromovide.getGene(position);
         System.out.println(gene);
 
-
-        // ajout d'un gene homozygote
+        // ajout d'un gene homozygote : test
         position.setFirstBit(2);
         position.setLastBit(3);
         gene.setAlleleA(1);

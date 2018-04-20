@@ -1,0 +1,36 @@
+
+#logging
+logging:
+  level:
+    org.springframework.data: debug
+    .: error
+
+# Mongo db
+
+#mongodb
+spring:
+  data:
+    mongodb:
+      uri: mongodb://elewandowski:Fpzqyqvh1$@elewandowski-shard-00-01-fhyul.mongodb.net:27017,elewandowski-shard-00-00-fhyul.mongodb.net:27017,elewandowski-shard-00-02-fhyul.mongodb.net:27017/nf?ssl=true&replicaSet=elewandowski-shard-0&authSource=admin
+
+
+#security
+#spring security with OAUTH2 and JWT
+security:
+  oauth2:
+    resource:
+      filter-order: 3
+  signing-key: UHZ6qiPhFcvjle7qmzcMdfSxpOcM7kFQ
+  encoding-strength: 256
+  security-realm: NF Realm
+  jwt:
+    client-id: nfbatch
+    client-secret: nfbatchpassword
+    scope-read: perso.read
+    scope-write: perso.write
+    resource-ids: http://NF.backend
+
+genetic:
+  genome:
+    humain:
+      MCIR : {"MCIR", "Gene de la rousseur des cheveux" , "longueur: 1 - 0= cheveux non roux, 1=heveux roux"}

@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 
 /*
  * This class is used to remove the _class in JSON payload store in a MongoDB database.
- * test 5
+ * test 6
  */
 @Configuration
 public class SpringMongoConfig {

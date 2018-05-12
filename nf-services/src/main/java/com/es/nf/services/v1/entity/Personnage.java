@@ -22,16 +22,19 @@ public class Personnage {
     @JsonProperty("_id")
     @Id
     private String id;
+
     @JsonProperty("partyId")
     private Integer partyId;
+
     @JsonProperty("prenom")
     private String prenom;
+
     @JsonProperty("nom")
     private String nom;
-    @JsonProperty("adresse")
-    private Adresse adresse;
+
     @JsonProperty("age")
     private Integer age;
+
     @JsonProperty("email")
     private String email;
 
@@ -74,16 +77,6 @@ public class Personnage {
     @JsonProperty("nom")
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    @JsonProperty("adresse")
-    public Adresse getAdresse() {
-        return adresse;
-    }
-
-    @JsonProperty("adresse")
-    public void setAdresse(Adresse adresse) {
-        this.adresse = adresse;
     }
 
     @JsonProperty("age")

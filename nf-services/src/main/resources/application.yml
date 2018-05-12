@@ -31,6 +31,9 @@ security:
     resource-ids: http://NF.backend
 
 genetic:
-  genome:
-    humain:
-      MCIR : {"MCIR", "Gene de la rousseur des cheveux" , "longueur: 1 - 0= cheveux non roux, 1=heveux roux"}
+    humangenomeref:
+      - H-BB; Couleur de cheveux - Brun ou blond; 1=noir, 2=brun, 3=châtain foncé, 4=châtain, 5=châtain clair, 6=blond foncé, 7=blond moyen, 8=blond clair, 9=blond très clair, 10=blond platine ; HY;1;4
+      - H-R; Couleur de cheveux - Roux; 1 = roux (dominant), 0 = pas de rousseur; HY;5;5
+
+
+

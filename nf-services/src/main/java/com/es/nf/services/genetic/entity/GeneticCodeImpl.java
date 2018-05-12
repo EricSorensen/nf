@@ -16,7 +16,7 @@ public class GeneticCodeImpl implements GeneticCode{
     @Override
     public Gene getGene(String pGeneName, Genome pGenome) {
         // Try to find the gene in the Genome
-        GenePosition pos = pGenome.getGenePosition(pGeneName);
+        GeneInformation pos = pGenome.getGenePosition(pGeneName);
 
         // If we are here, it means that we found the gene in the genome
         // now we find the right chromosome
@@ -33,12 +33,20 @@ public class GeneticCodeImpl implements GeneticCode{
     }
 
     private Chromosome getChromosome(String pChromosomeName) {
-        return code.get(pChromosomeName);
+        Chromosome returnedValue = code.get(pChromosomeName);
+
+        if (returnedValue == null ) {
+            returnedValue = new ChromosomeImpl();
+            returnedValue.setName(pChromosomeName);
+            code.put(pChromosomeName, returnedValue);
+        }
+
+        return returnedValue;
     }
 
     public void addGene(Gene pGene, Genome pGenome) throws GeneticException {
         // Try to find the gene in the Genome
-        GenePosition pos = pGenome.getGenePosition(pGene.getName());
+        GeneInformation pos = pGenome.getGenePosition(pGene.getName());
 
         //Check if the value for the gene can be stored in this position
         int nbBits = pos.getLastBit() - pos.getFirstBit() + 1;
@@ -65,7 +73,7 @@ public class GeneticCodeImpl implements GeneticCode{
         chromosome.addGene(pGene, pos);
     }
 
-    private Chromosome getChromosome(String pGeneName, GenePosition pPos) {
+    private Chromosome getChromosome(String pGeneName, GeneInformation pPos) {
 
 
         Chromosome chromosome = getChromosome(pPos.getChromosomeName());
@@ -82,7 +90,7 @@ public class GeneticCodeImpl implements GeneticCode{
 
     public void mitose(Genome pGenome) {
 
-        for (GenePosition pos : pGenome.getTemplate().values()) {
+        for (GeneInformation pos : pGenome.getTemplate().values()) {
 
             if (code.get(pos.getChromosomeName())== null){
                 Chromosome chromosome = new ChromosomeImpl();

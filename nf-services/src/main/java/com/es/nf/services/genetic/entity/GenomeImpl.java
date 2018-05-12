@@ -1,25 +1,32 @@
 package com.es.nf.services.genetic.entity;
 
 import com.es.nf.services.genetic.exception.GeneticException;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class GenomeImpl implements Genome {
 
-    private HashMap<String, GenePosition> template;
+    private Map<String, GeneInformation> template;
 
-    protected GenomeImpl() {
-        template = new HashMap<String, GenePosition>();
+    public GenomeImpl() {
+        template = new HashMap<String, GeneInformation>();
     }
 
     @Override
-    public Map<String, GenePosition> getTemplate() {
+    public Map<String, GeneInformation> getTemplate() {
         return template;
     }
 
-    public GenePosition getGenePosition(String pGeneName) {
-        GenePosition pos = template.get(pGeneName);
+    @Override
+    public void setTemplate(Map<String, GeneInformation> pMap) {
+        template= pMap;
+    }
+
+
+    public GeneInformation getGenePosition(String pGeneName) {
+        GeneInformation pos = template.get(pGeneName);
 
         if (pos == null) {
             throw new GeneticException("Cannot find a gene called "

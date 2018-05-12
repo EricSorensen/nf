@@ -1,9 +1,5 @@
 package com.es.nf.services.genetic.entity;
 
-import sun.java2d.x11.X11SurfaceDataProxy;
-
-import java.util.BitSet;
-
 public class ChromosomeImpl implements Chromosome {
 
     private String name;
@@ -16,7 +12,7 @@ public class ChromosomeImpl implements Chromosome {
         chainB = 0;
     }
 
-    public Gene getGene(GenePosition pPos){
+    public Gene getGene(GeneInformation pPos){
 
         int nbBits = pPos.getLastBit() - pPos.getFirstBit() + 1;
         double maskBits = 0;
@@ -44,12 +40,12 @@ public class ChromosomeImpl implements Chromosome {
 
     }
 
-    public void addGene(Gene gene, GenePosition pPos) {
+    public void addGene(Gene gene, GeneInformation pPos) {
         chainA = addAllele(gene.getAlleleA(), pPos, chainA);
         chainB = addAllele(gene.getAlleleB(), pPos, chainB);
     }
 
-    private long addAllele(long valueAllele, GenePosition pPos, long pChromosomeChain) {
+    private long addAllele(long valueAllele, GeneInformation pPos, long pChromosomeChain) {
         int bitLeft = pPos.getFirstBit();
         long returnValue = 0;
 

@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-// No need implementation, just one interface, and you have CRUD, thanks Spring Data
+
 public interface PersonnageRepository extends MongoRepository<Personnage, Long> {
 
     Personnage findByPartyId(int partyId);

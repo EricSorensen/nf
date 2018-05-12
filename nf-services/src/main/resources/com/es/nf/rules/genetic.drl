@@ -1,0 +1,68 @@
+package com.es.nf.rules
+
+
+import com.es.nf.services.genetic.entity.Gene;
+import java.lang.String;
+
+
+/* Local variable to help rules inference*/
+global com.es.nf.services.rules.GlobalGeneticContext    context;
+
+/* logger */
+global org.slf4j.Logger     log;
+
+/* output value */
+global java.util.Map        output;
+
+dialect "java"
+
+/*  Hair computation */
+rule "P-HAIR-RED-001"
+salience 30
+no-loop
+    when
+        $gene : Gene(name=="H-R")
+     then
+        log.debug("P-HAIR-RED-001 fired");
+        context.setHairRed(($gene.getAlleleA()==1 && $gene.getAlleleB()==1));
+end
+
+rule "P-HAIR-TINT-010"
+salience 20
+no-loop
+    when
+        $gene : Gene(name=="H-BB" && (alleleA > alleleB))
+     then
+        log.debug("P-HAIR-TINT-010 fired");
+        context.setHairTint($gene.getAlleleA());
+
+end
+
+rule "P-HAIR-TINT-011"
+salience 20
+no-loop
+    when
+        $gene : Gene(name=="H-BB" && (alleleA <= alleleB))
+     then
+        log.debug("P-HAIR-TINT-011 fired");
+        context.setHairTint($gene.getAlleleB());
+end
+
+rule "P-HAIR-VALUE-010"
+salience 10
+    when
+        eval (context.isHairRed()== true)
+     then
+        log.debug("P-HAIR-VALUE-010 fired");
+        output.put("HAIR", context.getHairTint()*2);
+
+end
+
+rule "P-HAIR-VALUE-011"
+salience 10
+    when
+        eval (context.isHairRed()== false)
+     then
+        log.debug("P-HAIR-VALUE-011 fired");
+        output.put("HAIR", context.getHairTint());
+end

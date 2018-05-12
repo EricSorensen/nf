@@ -4,7 +4,10 @@ import java.util.Map;
 
 public interface Genome {
 
-    public GenePosition getGenePosition(String pGeneName);
-    public Map<String, GenePosition> getTemplate();
+
+    public GeneInformation getGenePosition(String pGeneName);
+
+    public Map<String, GeneInformation> getTemplate();
+    void setTemplate(Map<String, GeneInformation> pMap);
 
 }

@@ -5,7 +5,7 @@ public interface Chromosome {
     public String getName();
     public void setName(String pName);
 
-    public Gene getGene(GenePosition pPos);
-    public void addGene(Gene gene, GenePosition pPos);
+    public Gene getGene(GeneInformation pPos);
+    public void addGene(Gene gene, GeneInformation pPos);
 
 }

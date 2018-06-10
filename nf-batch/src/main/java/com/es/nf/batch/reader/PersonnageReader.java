@@ -35,7 +35,7 @@ public class PersonnageReader implements ItemReader<PersonnageDTO> {
 
         ParameterizedTypeReference<List<Personnage>> listOfPersonnages = new ParameterizedTypeReference<List<Personnage>>() {};
 
-        ResponseEntity<List<Personnage>> response = restTemplate.exchange(getPersonnagesURL(),HttpMethod.GET,listOfPersonnages);
+        ResponseEntity<List<Personnage>> response = restTemplate.exchange(getPersonnagesURL(),HttpMethod.GET,null, listOfPersonnages);
 
         for (Personnage pers : response.getBody()) {
             PersonnageDTO dto = new PersonnageDTO();

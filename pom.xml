@@ -11,6 +11,10 @@
     <packaging>pom</packaging>
     <description>NF project</description>
 
+    <properties>
+        <spring.version>5.0.4.RELEASE</spring.version>
+    </properties>
+
     <groupId>com.es.nf</groupId>
     <artifactId>nf-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -19,5 +23,22 @@
         <module>nf-domain</module>
         <module>nf-services</module>
         <module>nf-batch</module>
+        <module>nf-genator</module>
+        <module>nf-commons</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

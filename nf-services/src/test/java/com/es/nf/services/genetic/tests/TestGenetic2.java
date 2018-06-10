@@ -1,7 +1,7 @@
 package com.es.nf.services.genetic.tests;
 
 
-import com.es.nf.services.genetic.entity.*;
+import com.es.nf.domain.v1.genetic.entity.*;
 import com.es.nf.services.rules.GlobalGeneticContext;
 import org.junit.Test;
 import org.kie.api.KieServices;

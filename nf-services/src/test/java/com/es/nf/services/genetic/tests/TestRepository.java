@@ -1,31 +1,20 @@
 package com.es.nf.services.genetic.tests;
 
+import com.es.nf.domain.v1.genetic.entity.Gene;
+import com.es.nf.domain.v1.genetic.entity.GeneImpl;
+import com.es.nf.domain.v1.genetic.entity.GeneticCodeImpl;
+import com.es.nf.domain.v1.genetic.entity.Genome;
 import com.es.nf.services.config.GeneticConfiguration;
 import com.es.nf.services.config.SpringMongoConfig;
-import com.es.nf.services.genetic.entity.*;
-import com.es.nf.services.v1.entity.BiologicalFile;
+import com.es.nf.services.v1.entity.BiologicalFileDB;
 import com.es.nf.services.v1.repository.BiologicalFileRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataMongo;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
-import org.springframework.boot.test.context.ConfigFileApplicationContextInitializer;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTestContextBootstrapper;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.BootstrapWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -42,7 +31,7 @@ public class TestRepository {
     @Test
     public void testBiologicalFile() {
 
-        BiologicalFile bFile = new BiologicalFile();
+        BiologicalFileDB bFile = new BiologicalFileDB();
         GeneticCodeImpl genCode= new GeneticCodeImpl();
         //Genome genome = new HumanGenome();
 

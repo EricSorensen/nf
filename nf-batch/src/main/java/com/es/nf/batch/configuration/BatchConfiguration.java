@@ -1,11 +1,5 @@
 package com.es.nf.batch.configuration;
 
-import com.auth0.client.auth.AuthAPI;
-import com.auth0.exception.APIException;
-import com.auth0.exception.Auth0Exception;
-import com.auth0.json.auth.TokenHolder;
-import com.auth0.net.AuthRequest;
-import com.es.nf.batch.Security.Auth0RestTemplate;
 import com.es.nf.batch.dto.PersonnageDTO;
 import com.es.nf.batch.processor.EmptyProcessor;
 import com.es.nf.batch.processor.HealthProcessor;
@@ -13,6 +7,7 @@ import com.es.nf.batch.reader.HealthReader;
 import com.es.nf.batch.reader.PersonnageReader;
 import com.es.nf.batch.writer.EmptyWriter;
 import com.es.nf.batch.writer.PersonnageWriter;
+import com.es.nf.commons.ws.Auth0RestTemplate;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.core.Step;
@@ -22,8 +17,6 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.listener.JobExecutionListenerSupport;
-import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
@@ -33,19 +26,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskExecutor;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
-import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
-import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordResourceDetails;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.security.oauth2.client.OAuth2RestTemplate;
-import org.springframework.web.client.RestTemplate;
 
 import javax.activation.DataSource;
 
 import static java.lang.String.format;
-import static java.util.Arrays.asList;
 
 
 @Configuration

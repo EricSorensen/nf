@@ -42,10 +42,5 @@
         </dependencies>
     </dependencyManagement>
 
-    <repositories>
-        <repository>
-            <id>central repositoryy</id>
-            <url>http://central.maven.org/maven2/</url>
-        </repository>
-    </repositories>
+
 </project>

@@ -28,12 +28,17 @@ public class BiologicalFile {
     private GeneticCodeImpl geneticCode;
 
     public Integer getPartyId() { return partyId; }
-
     public void setPartyId(Integer partyId) { this.partyId = partyId; }
 
     public GeneticCodeImpl getGeneticCode() { return geneticCode; }
-
     public void setGeneticCode(GeneticCodeImpl geneticCode) {
         this.geneticCode = geneticCode;
     }
+
+    public Integer getPartyIdPere() { return partyIdPere; }
+    public void setPartyIdPere(Integer partyIdPere) { this.partyIdPere = partyIdPere; }
+
+    public Integer getPartyIdMere() { return partyIdMere; }
+    public void setPartyIdMere(Integer partyIdMere) { this.partyIdMere = partyIdMere; }
+
 }

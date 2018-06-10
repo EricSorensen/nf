@@ -53,6 +53,8 @@ public class GenderDataProcessor implements DataProcessor{
         for (Personnage perso : persoList) {
             BiologicalFile bf = new BiologicalFile();
             bf.setPartyId(perso.getPartyId());
+            bf.setPartyIdMere(0);   // Colon : No parent
+            bf.setPartyIdPere(0);   // Colon : No parent
             GeneticCodeImpl gc = new GeneticCodeImpl();
 
             Gene gene = new GeneImpl();

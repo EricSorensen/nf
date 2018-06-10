@@ -22,4 +22,6 @@ com:
         services:
           url:
             bfAdd: https://nfapi.herokuapp.com/v1/biologicalfiles
+            bfListColon: https://nfapi.herokuapp.com/v1/biologicalfiles/parents/0
+            bfUpdate: http://localhost:8080/v1/biologicalfiles
             persoList: https://nfapi.herokuapp.com/v1/personnages

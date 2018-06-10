@@ -1,6 +1,7 @@
 package com.es.nf.genator;
 
 
+import com.es.nf.genator.processor.AddGeneHairDataProcessor;
 import com.es.nf.genator.processor.DataProcessor;
 import com.es.nf.genator.processor.GenderDataProcessor;
 import org.slf4j.Logger;
@@ -37,7 +38,8 @@ public class ApplicationGenator {
 
     @Bean
     public DataProcessor getProcessor() {
-        return new GenderDataProcessor();
+        //return new GenderDataProcessor();
+        return new AddGeneHairDataProcessor();
     }
 
 }

@@ -14,5 +14,7 @@ public interface BiologicalFileRepository extends MongoRepository<BiologicalFile
 
     BiologicalFileDB insert(BiologicalFileDB file);
 
+    BiologicalFileDB save(BiologicalFileDB file);
+
 
 }

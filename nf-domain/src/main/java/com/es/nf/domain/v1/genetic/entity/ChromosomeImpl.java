@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.util.BitSet;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "code"
@@ -57,11 +59,14 @@ public class ChromosomeImpl implements Chromosome {
         chainB = addAllele(gene.getAlleleB(), pPos, chainB);
     }
 
-    private long addAllele(long valueAllele, GeneInformation pPos, long pChromosomeChain) {
+    /*private long addAllele(long valueAllele, GeneInformation pPos, long pChromosomeChain) {
         int bitLeft = pPos.getFirstBit();
         long returnValue = 0;
 
         if (bitLeft>0){
+            //On efface la valeur précédent
+            BitSet bs = new BitSet(pChromosomeChain);
+
             // On décalage vers la gauche pour placer le
             // gene à la bonne place sur le chromosome
             valueAllele = valueAllele<<(bitLeft-1);
@@ -71,7 +76,29 @@ public class ChromosomeImpl implements Chromosome {
         }
         return returnValue;
 
+    }*/
+
+    private long addAllele(long valueAllele, GeneInformation pPos, long pChromosomeChain) {
+        BitSet bsChromosomeChain = BitSetConverter.convert(pChromosomeChain);
+        BitSet bsValueAllele = BitSetConverter.convert(valueAllele);
+
+        // on efface l'ancienne valeur sur le chromosome
+        bsChromosomeChain.clear(pPos.getFirstBit()-1, pPos.getLastBit());
+
+        int j = 0;
+        for (int i = pPos.getFirstBit()-1; i<=pPos.getLastBit()-1 ; i++) {
+            if (bsValueAllele.get(j)) {
+                bsChromosomeChain.set(i);
+            }
+            j++;
+        }
+
+        // on retourne la valeur du Chromosome
+        return BitSetConverter.convert(bsChromosomeChain);
+
+
     }
+
 
     @Override
     public String toString() {

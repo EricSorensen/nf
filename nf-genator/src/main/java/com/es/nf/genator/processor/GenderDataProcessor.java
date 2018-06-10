@@ -81,7 +81,7 @@ public class GenderDataProcessor implements DataProcessor{
     private List<Personnage> getPerso() {
         ParameterizedTypeReference<List<Personnage>> listOfPersonnage = new ParameterizedTypeReference<List<Personnage>>() {};
 
-        ResponseEntity<List<Personnage>> response = restTemplate.exchange(getPersoURL(),HttpMethod.GET, listOfPersonnage);
+        ResponseEntity<List<Personnage>> response = restTemplate.exchange(getPersoURL(),HttpMethod.GET, null,listOfPersonnage);
 
         return response.getBody();
     }

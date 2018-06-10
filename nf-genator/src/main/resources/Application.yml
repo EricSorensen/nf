@@ -15,11 +15,11 @@ com:
           tokenUrl: https://elewandowski.auth0.com/oauth/token
           portAccessTokenUrl: 443
           clientId: LdoMb0hez4nVj98Vbji9rqVs7wgZFb26
-          clientSecret: Bih2O32IiYdBc3MdGjoo3zVWasFa8lbicUbI_aMg0mJbeLgLdafQvbKpYw2ET8EL
+          clientSecret: ${MONGODB_PWD}
           audience: http://NF.backend
           #Services configuration
       genator:
         services:
           url:
-            bfAdd: http://localhost:8080/v1/biologicalfiles
-            persoList: http://localhost:8080/v1/personnages
+            bfAdd: https://nfapi.herokuapp.com/v1/biologicalfiles
+            persoList: https://nfapi.herokuapp.com/v1/personnages

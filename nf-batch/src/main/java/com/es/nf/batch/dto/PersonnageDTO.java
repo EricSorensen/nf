@@ -1,6 +1,6 @@
 package com.es.nf.batch.dto;
 
-import com.es.nf.domain.v1.entity.Personnage;
+import com.es.nf.domain.v1.Personnage;
 
 public class PersonnageDTO {
 

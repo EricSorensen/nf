@@ -1,17 +1,17 @@
 package com.es.nf.services.genetic.tests;
 
 
-import com.es.nf.services.genetic.entity.*;
-import junit.framework.JUnit4TestCaseFacade;
+import com.es.nf.domain.v1.genetic.entity.*;
 import org.junit.Test;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertTrue;
 
 
 public class TestGenetic  {
 
-    //private static Logger log = new Logger(TestGenetic.class);
+    private static final Logger log = LoggerFactory.getLogger(TestGenetic.class);
 
     @Test
     public void checkBit() {
@@ -27,8 +27,9 @@ public class TestGenetic  {
 
     @Test
     public void addGetGene() {
+
         Chromosome chromovide = new ChromosomeImpl();
-        GenePosition position = new GenePosition("HY",3, 4  );
+        GeneInformation position = new GeneInformation("H-BB","", "", "HY", 3, 4  );
 
         // Test gene vide
         Gene gene = chromovide.getGene(position);
@@ -124,7 +125,6 @@ public class TestGenetic  {
         System.out.println(gene);
 
     }
-
 
     @Test
     public void validateGenome() {

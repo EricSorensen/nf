@@ -1,0 +1,6 @@
+- H-S; Sexe - Masculin ou féminin; 1=X, O=Y;HY;1;1
+- H-BB; Couleur de cheveux - Brun ou blond; 1=noir, 2=brun, 3=châtain foncé, 4=châtain, 5=châtain clair, 6=blond foncé, 7=blond moyen, 8=blond clair, 9=blond très clair, 10=blond platine ; HY;2;5
+- H-R; Couleur de cheveux - Roux; 1 = roux (dominant), 0 = pas de rousseur; HY;6;6
+
+
+

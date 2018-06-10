@@ -1,0 +1,29 @@
+#logging
+logging:
+  level:
+    org.springframework.data: debug
+    .: error
+
+# Mongo db
+
+#mongodb
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URL}
+
+#security
+#spring security with OAUTH2 and JWT
+security:
+  oauth2:
+    resource:
+      filter-order: 3
+  signing-key: UHZ6qiPhFcvjle7qmzcMdfSxpOcM7kFQ
+  encoding-strength: 256
+  security-realm: NF Realm
+  jwt:
+    client-id: nfbatch
+    client-secret: nfbatchpassword
+    scope-read: perso.read
+    scope-write: perso.write
+    resource-ids: http://NF.backend

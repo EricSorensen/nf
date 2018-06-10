@@ -15,7 +15,7 @@ com:
           tokenUrl: https://elewandowski.auth0.com/oauth/token
           portAccessTokenUrl: 443
           clientId: LdoMb0hez4nVj98Vbji9rqVs7wgZFb26
-          clientSecret: Bih2O32IiYdBc3MdGjoo3zVWasFa8lbicUbI_aMg0mJbeLgLdafQvbKpYw2ET8EL
+          clientSecret: ${AUTH0_PWD}
           audience: http://NF.backend
           #Services configuration
       genator:

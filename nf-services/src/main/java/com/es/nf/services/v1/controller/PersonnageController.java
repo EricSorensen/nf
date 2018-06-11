@@ -53,9 +53,14 @@ public class PersonnageController {
     @PostMapping("/personnages")
     @ResponseBody
     @PreAuthorize("#oauth2.hasScope('personnage.write')")
-    public PersonnageDB createPersonnage(@RequestBody PersonnageDB pPerso){
+    public synchronized PersonnageDB createPersonnage(@RequestBody PersonnageDB pPerso){
 
         log.debug("call of POST /personnages/");
+
+        // Find the last partyId
+        // set the maxPartyId + 1 as the new partyid
+        PersonnageDB maxPartyIdPerso = repository.findFirstByOrderByPartyIdDesc();
+        pPerso.setPartyId(maxPartyIdPerso.getPartyId() + 1);
 
         //Create the character
         return repository.insert(pPerso);

@@ -22,11 +22,11 @@ public class GenderDataProcessor implements DataProcessor{
     @Autowired
     private HumanGenome genome;
 
-    @Value("${com.es.nf.genator.services.url.bfAdd}")
+    @Value("${com.es.nf.genator.services.url.bfBase}")
     private String bfURL;
 
 
-    @Value("${com.es.nf.genator.services.url.persoList}")
+    @Value("${com.es.nf.genator.services.url.persoBase}")
     private String persoURL;
 
     private List<Integer> femmes = new ArrayList<Integer>();

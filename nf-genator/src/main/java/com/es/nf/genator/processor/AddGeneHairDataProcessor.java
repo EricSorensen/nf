@@ -25,7 +25,7 @@ public class AddGeneHairDataProcessor implements DataProcessor {
     @Value("${com.es.nf.genator.services.url.bfListColon}")
     private String bfURL;
 
-    @Value("${com.es.nf.genator.services.url.bfUpdate}")
+    @Value("${com.es.nf.genator.services.url.bfBase}")
     private String bfURLUpdate;
 
     @Override

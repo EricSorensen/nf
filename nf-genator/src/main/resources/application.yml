@@ -23,4 +23,4 @@ com:
           url:
             bfBase: https://nfapi.herokuapp.com/v1/biologicalfiles
             bfListColon: https://nfapi.herokuapp.com/v1/biologicalfiles/parents/0
-            persoBase: http://localhost:8080/v1/personnages
+            persoBase: https://nfapi.herokuapp.com/v1/personnages

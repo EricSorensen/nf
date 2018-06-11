@@ -1,12 +1,11 @@
 package com.es.nf.services.v1.controller;
 
+import com.es.nf.domain.v1.Personnage;
+import com.es.nf.services.v1.entity.BiologicalFileDB;
 import com.es.nf.services.v1.entity.PersonnageDB;
 import com.es.nf.services.v1.repository.PersonnageRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import org.slf4j.Logger;
@@ -23,7 +22,7 @@ public class PersonnageController {
 
     @GetMapping("/perso/{partyId}")
     @PreAuthorize("#oauth2.hasScope('personnage.read')")
-    public PersonnageDB getPerso(@PathVariable(value = "partyId", required = true)int partyId){
+    public Personnage getPerso(@PathVariable(value = "partyId", required = true)int partyId){
 
         log.debug("call of /perso/"+ partyId);
 
@@ -35,7 +34,7 @@ public class PersonnageController {
 
     @GetMapping("/personnages/{partyId}")
     @PreAuthorize("#oauth2.hasScope('personnage.read')")
-    public PersonnageDB getPersonnage(@PathVariable(value = "partyId", required = true)int partyId){
+    public Personnage getPersonnage(@PathVariable(value = "partyId", required = true)int partyId){
 
         log.debug("call of /personnage/"+ partyId);
 
@@ -49,5 +48,16 @@ public class PersonnageController {
         //Nothing to do except return the value found in repository
         log.debug("call of /personnages");
         return repository.findAll();
+    }
+
+    @PostMapping("/personnages")
+    @ResponseBody
+    @PreAuthorize("#oauth2.hasScope('personnage.write')")
+    public PersonnageDB createPersonnage(@RequestBody PersonnageDB pPerso){
+
+        log.debug("call of POST /personnages/");
+
+        //Create the character
+        return repository.insert(pPerso);
     }
 }

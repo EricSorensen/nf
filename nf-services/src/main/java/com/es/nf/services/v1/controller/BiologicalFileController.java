@@ -27,7 +27,7 @@ public class BiologicalFileController {
 
     @GetMapping("/biologicalfiles/{partyId}")
     @PreAuthorize("#oauth2.hasScope('biological.read')")
-    public BiologicalFileDB getBiologicalFile(@PathVariable(value = "partyId", required = true)int partyId){
+    public BiologicalFile getBiologicalFile(@PathVariable(value = "partyId", required = true)int partyId){
 
         log.debug("call of /biologicalfile/"+ partyId);
 
@@ -53,7 +53,7 @@ public class BiologicalFileController {
     @PostMapping("/biologicalfiles")
     @ResponseBody
     @PreAuthorize("#oauth2.hasScope('biological.write')")
-    public BiologicalFileDB createBiologicalFile(@RequestBody BiologicalFileDB pFile){
+    public BiologicalFile createBiologicalFile(@RequestBody BiologicalFileDB pFile){
 
         log.debug("call of POST /biologicalfile/");
 

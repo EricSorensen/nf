@@ -13,6 +13,7 @@
 
     <properties>
         <spring.version>5.0.4.RELEASE</spring.version>
+        <ehcache.version>2.6.9</ehcache.version>
     </properties>
 
     <groupId>com.es.nf</groupId>
@@ -38,6 +39,12 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-core</artifactId>
                 <version>${spring.version}</version>
+            </dependency>
+            <!-- ehcache -->
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache-core</artifactId>
+                <version>${ehcache.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -5,16 +5,19 @@ package com.es.nf.services.v1.controller;
 import com.es.nf.domain.v1.BiologicalFile;
 import com.es.nf.services.v1.entity.BiologicalFileDB;
 import com.es.nf.services.v1.repository.BiologicalFileRepository;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Id;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/v1")
@@ -35,6 +38,66 @@ public class BiologicalFileController {
         BiologicalFileDB returnedValue = repository.findByPartyId(partyId);
         return returnedValue;
     }
+
+    @GetMapping("/biologicalfiles")
+    @ResponseBody
+    @PreAuthorize("#oauth2.hasScope('biological.read')")
+    public Object getBiologicalFile(@RequestParam Map<String, String> customQuery){
+
+        String sortType = customQuery.get("sortType");
+
+        int pageSize = 0;
+        if (customQuery.get("pageSize") != null) {
+            try {
+                pageSize = Integer.valueOf(customQuery.get("pageSize"));
+            } catch (NumberFormatException e) {
+                throw new RuntimeException("pageSize attribute is invalid. Not a numeric format");
+            }
+
+        }
+
+        int pageNumber = 0;
+        if (customQuery.get("pageNumber") != null) {
+            try {
+                pageNumber = Integer.valueOf(customQuery.get("pageNumber"));
+            } catch (NumberFormatException e){
+                throw new RuntimeException ("pageNumber attribute is invalid. Not a numeric format");
+            }
+        }
+
+        log.debug("call of /biologicalfile with sortType="+ sortType + " with PageNumber=" +  pageNumber +
+                    "And pageSize=" + pageSize);
+
+        List<BiologicalFileDB> list = null;
+
+        Pageable pageable = null;
+        if ((pageSize == 0)) {
+            //No pageSize means no pagination
+            //PageNumber is ignored
+            if (sortType != null) {
+                pageable = PageRequest.of(0, Integer.MAX_VALUE, Sort.by(Sort.Order.asc(sortType)));
+            } else {
+                pageable = PageRequest.of(0, Integer.MAX_VALUE);
+            }
+        } else {
+            // pageSize != 0 means pagination
+            // Default pageNumber is 0
+            if (sortType != null){
+                pageable = PageRequest.of(pageNumber, pageSize, Sort.by(Sort.Order.asc(sortType)));
+                list = repository.findAll(Sort.by(Sort.Order.asc(sortType)));
+            } else {
+                pageable = PageRequest.of(pageNumber, pageSize);
+                list = repository.findAll();
+            }
+        }
+
+        //Nothing to do except return the value found in repository
+        // return the page information
+        Page<BiologicalFileDB> page = null;
+        page  = repository.findAll(pageable);
+        return page;
+    }
+
 
     @GetMapping("/biologicalfiles/parents/{partyIds}")
     @ResponseBody

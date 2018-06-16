@@ -22,7 +22,7 @@ public class AddGeneHairDataProcessor implements DataProcessor {
     @Autowired
     private HumanGenome genome;
 
-    @Value("${com.es.nf.genator.services.url.bfListColon}")
+    @Value("${com.es.nf.genator.services.url.bfListParent}")
     private String bfURL;
 
     @Value("${com.es.nf.genator.services.url.bfBase}")
@@ -106,7 +106,7 @@ public class AddGeneHairDataProcessor implements DataProcessor {
     private List<BiologicalFile> getColons() {
         ParameterizedTypeReference<List<BiologicalFile>> listOfBiologicalFile = new ParameterizedTypeReference<List<BiologicalFile>>() {};
 
-        ResponseEntity<List<BiologicalFile>> response = restTemplate.exchange(getBfURL(),HttpMethod.GET, null,listOfBiologicalFile);
+        ResponseEntity<List<BiologicalFile>> response = restTemplate.exchange(getBfURL()+"/0",HttpMethod.GET, null,listOfBiologicalFile);
 
         return response.getBody();
     }

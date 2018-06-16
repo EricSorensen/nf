@@ -5,8 +5,10 @@ import com.es.nf.domain.v1.genetic.entity.Genome;
 
 public interface GeneticServices {
 
-    public void createChild (BiologicalFile pBFFather,
+     void createChild (BiologicalFile pBFFather,
                              BiologicalFile pBMother,
                              BiologicalFile pChild,
                              Genome         pGenome);
+
+     void visitGenealogy (GenealogyVisitor pVisitor);
 }

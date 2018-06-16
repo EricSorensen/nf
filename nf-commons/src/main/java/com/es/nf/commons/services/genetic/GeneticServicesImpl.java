@@ -4,6 +4,10 @@ import com.es.nf.domain.v1.BiologicalFile;
 import com.es.nf.domain.v1.genetic.entity.*;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @Component
 public class GeneticServicesImpl implements GeneticServices {
 
@@ -16,11 +20,10 @@ public class GeneticServicesImpl implements GeneticServices {
         setParent(pBFFather, pBFMother, pBFChild);
 
         //Create empty genetic code for child
-        CreateEmpyGeneticCode (pBFChild);
+        createEmpyGeneticCode(pBFChild);
 
         // Set Parents in Biological file
         mixGenes(pBFFather, pBFMother, pBFChild, pGenome);
-
 
     }
 
@@ -29,7 +32,7 @@ public class GeneticServicesImpl implements GeneticServices {
         pBFChild.setPartyIdMere(pBFMother.getPartyId());
     }
 
-    private void CreateEmpyGeneticCode(BiologicalFile pBFChild) {
+    private void createEmpyGeneticCode(BiologicalFile pBFChild) {
 
         if (pBFChild.getGeneticCode() == null) {
             pBFChild.setGeneticCode(new GeneticCodeImpl());
@@ -62,5 +65,21 @@ public class GeneticServicesImpl implements GeneticServices {
         }
     }
 
+    @Override
+    public void visitGenealogy(GenealogyVisitor pVisitor) {
+        // 1- we visit the colons to apply the action
+        List<BiologicalFile> bfList = pVisitor.getAllBFListPerPartyId();
+
+        // Visit all nodes
+        visitGeneration(bfList, pVisitor);
+    }
+
+    private void visitGeneration(List<BiologicalFile> pBFList, GenealogyVisitor pVisitor) {
+
+        for (BiologicalFile bf : pBFList) {
+            pVisitor.doVisit(bf);
+        }
+
+    }
 
 }
